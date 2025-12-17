@@ -1,0 +1,276 @@
+.login-general-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.logo-container {
+    width: 50vw;
+    margin-inline: auto;
+}
+
+.logo-adjustment {
+    width: 50%;
+    margin-inline: auto;
+}
+
+.logo {
+    width: 15%;
+}
+
+.logo img {
+  width: 6rem;
+  height: auto;
+  display: block;
+}
+
+.logo-frase {
+    font-size: 2.7rem;
+}
+
+.auth-container {
+  width: 50vw;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif, Arial, Helvetica;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 16px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.auth-card h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+/* ==================== BOTÕES COMUNS ==================== */
+.auth-buttons,
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 8px 0;
+  color: #999;
+  font-size: 14px;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #eee;
+}
+
+.divider span {
+  background: white;
+  padding: 0 16px;
+}
+
+/* ==================== ESTILO SIGNUP PRINCIPAL ==================== */
+.signup-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.signup-btn:hover {
+  background: #5a6fd8;
+}
+
+/* ==================== ESTILO FORMULÁRIO CLÁSSICO ==================== */
+.auth-input-container {
+    color: black;
+    text-align: left;
+}
+
+.auth-input {
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #fafafa;
+  transition: border 0.2s, background 0.2s;
+  align-items: baseline;
+  display: flex;
+  margin-top: 5px;
+  width: calc(100% - 35px);
+  color: black;
+}
+
+.auth-input-container > label {
+    font-weight: 500;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+}
+
+.login-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+.login-btn:hover {
+  background: #5a6fd8;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-top: -8px;
+}
+
+.forgot-password a {
+  color: #667eea;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  background: #fef0f0;
+  color: #c33;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ==================== LINKS ==================== */
+.login-link,
+.signup-link {
+  margin-top: 20px;
+  color: #666;
+  font-size: 15px;
+  text-align: center;
+}
+
+.login-link a,
+.signup-link a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover,
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+.terms {
+  margin-top: 32px;
+  font-size: 13px;
+  color: #888;
+  line-height: 1.5;
+}
+
+.terms a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* ==================== RESPONSIVO ==================== */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 40px 24px;
+  }
+  
+  .auth-card h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+    .login-general-container {
+        display: block;
+    }
+
+    .logo-container, .auth-container {
+        width: 100vw;
+    }
+
+    .auth-container {
+        background: none;
+        min-height: 95vh;
+    }
+
+    .login-general-container {
+        display: block;
+    }
+
+    .logo {
+        margin-inline: auto;
+    }
+
+    .logo img {
+        width: 3.6rem;
+        display: block;
+        margin-bottom: 3rem;
+    }
+    
+    .logo-frase {
+        display: none;
+    }
+    
+    .logo-adjustment {
+        margin-top: 2rem;
+        width: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .auth-container{
+        padding: 0px;
+    }
+}

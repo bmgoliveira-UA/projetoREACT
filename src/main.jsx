@@ -8,7 +8,7 @@ import Register from './pages/Register.jsx';
 import Onboarding from './pages/Onboarding.jsx';
 
 import Layout from './pages/Layout.jsx';
-import Ola from './pages/Ola.jsx'
+import Home from './pages/Home.jsx'
 import Explore from './pages/Explore.jsx'
 import CreateSession from './pages/CreateSession.jsx'
 import SessionDetail from './pages/SessionDetail.jsx'
@@ -26,7 +26,7 @@ createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<Layout/>}>
-        <Route index element={<Ola/>}/>
+        <Route index element={<Home/>}/>
         <Route path="explore" element={<Explore />} />
         <Route path="create" element={<CreateSession />} />
         <Route path="session/:id" element={<SessionDetail />} />
@@ -40,9 +40,9 @@ createRoot(document.getElementById('root')).render(
         <Route path="*" element={<NotFound />} />
       </Route>
 
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/register' element={<Register/>}/>
-      <Route path='/onboarding' element={<Onboarding/>}/>
+      <Route path='login' element={<Login/>}/>
+      <Route path='register' element={<Register/>}/>
+      <Route path='onboarding' element={<Onboarding/>}/>
     </Routes>
   </BrowserRouter>
 )

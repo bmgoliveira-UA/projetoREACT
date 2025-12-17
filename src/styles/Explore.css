@@ -1,0 +1,203 @@
+.explore-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.explore-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.explore-header h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.explore-header p {
+  font-size: 1.3rem;
+  color: #666;
+}
+
+/* Barra de filtros */
+.filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.search-input {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+}
+
+.search-input input {
+  width: 100%;
+  padding: 14px 45px 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  color: #999;
+}
+
+.filters-bar select {
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+  min-width: 180px;
+}
+
+.btn-create {
+  background: #667eea;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-create:hover {
+  background: #5a6fd8;
+}
+
+/* Grid de sessões */
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.session-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.session-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.sport-tag {
+  background: #667eea;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.level-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.session-card h3 {
+  font-size: 1.4rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.creator {
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.session-details p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.description-preview {
+  margin-top: auto;
+  color: #777;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Estados vazios */
+.no-results {
+  text-align: center;
+  padding: 80px 20px;
+  color: #666;
+}
+
+.no-results p {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background: #667eea;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #666;
+  padding: 60px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input {
+    min-width: auto;
+  }
+
+  .filters-bar select {
+    min-width: auto;
+  }
+
+  .explore-header h1 {
+    font-size: 2.5rem;
+  }
+}

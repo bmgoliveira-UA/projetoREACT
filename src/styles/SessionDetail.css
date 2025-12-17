@@ -1,0 +1,214 @@
+.session-detail-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.session-sport-tag {
+  background: #667eea;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.session-level {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.session-detail-container h1 {
+  font-size: 2.8rem;
+  color: #333;
+  margin: 20px 0;
+}
+
+.session-meta {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.session-meta p {
+  margin: 12px 0;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.session-description h2 {
+  font-size: 1.8rem;
+  margin: 40px 0 15px;
+  color: #333;
+}
+
+.session-description p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Criador */
+.creator-section h2 {
+  font-size: 1.8rem;
+  margin: 40px 0 20px;
+}
+
+.creator-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #f0f4ff;
+  padding: 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s;
+}
+
+.creator-card:hover {
+  background: #e3ecff;
+  transform: translateY(-5px);
+}
+
+.creator-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.creator-card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.creator-card p {
+  margin: 5px 0 0;
+  color: #667eea;
+}
+
+/* Participantes */
+.participants-section h2 {
+  font-size: 1.8rem;
+  margin: 40px 0 20px;
+}
+
+.participants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+}
+
+.participant-card {
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s;
+}
+
+.participant-card:hover {
+  transform: scale(1.1);
+}
+
+.participant-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.participant-card p {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Botões de ação */
+.action-buttons {
+  margin: 60px 0;
+  text-align: center;
+}
+
+.join-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-right: 20px;
+}
+
+.join-btn:hover:not(:disabled) {
+  background: #5a6fd8;
+  transform: translateY(-3px);
+}
+
+.join-btn.joined {
+  background: #4caf50;
+}
+
+.join-btn.full {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.back-btn {
+  color: #667eea;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.loading,
+.not-found {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 100px;
+  color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .session-detail-container h1 {
+    font-size: 2.3rem;
+  }
+
+  .session-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .join-btn {
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+}

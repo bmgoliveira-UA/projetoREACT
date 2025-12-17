@@ -1,0 +1,218 @@
+.home-container {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 5%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: white;
+  color: #667eea;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background: #f0f0f0;
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #667eea;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Seções gerais */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 80px 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+/* Desportos */
+.sports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+}
+
+.sport-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  text-decoration: none;
+  color: #333;
+}
+
+.sport-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.sport-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+/* Sessões */
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.session-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+  text-decoration: none;
+  color: #333;
+}
+
+.session-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.session-sport {
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.session-info {
+  margin: 8px 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.participants {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.view-all {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.view-all a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+/* CTA Final */
+.cta-section {
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.cta-section h2 {
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.btn-primary.large {
+  padding: 18px 40px;
+  font-size: 1.2rem;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 5%;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
