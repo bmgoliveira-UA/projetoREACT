@@ -1,0 +1,292 @@
+.myprofile-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.profile-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 8px solid #667eea;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.profile-main-info h1 {
+  font-size: 3rem;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.username {
+  font-size: 1.5rem;
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.location {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 2.5rem;
+  color: #667eea;
+  font-weight: 800;
+}
+
+.stat span {
+  color: #666;
+  font-size: 1rem;
+}
+
+.btn-edit {
+  background: #ffc107;
+  color: #212529;
+  padding: 14px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.btn-edit:hover {
+  background: #e0a800;
+  transform: translateY(-3px);
+}
+
+/* Bio */
+.profile-bio {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+}
+
+.profile-bio h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.profile-bio p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Desportos */
+.profile-sports {
+  margin-bottom: 50px;
+}
+
+.profile-sports h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.sports-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.sport-tag {
+  background: #667eea;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.level {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Sessões */
+.profile-sessions-section {
+  margin-bottom: 60px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.btn-create-small {
+  background: #667eea;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-create-small:hover {
+  background: #5a6fd8;
+}
+
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.session-card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s;
+}
+
+.session-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.session-sport {
+  background: #667eea;
+  color: white;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.session-card h3 {
+  font-size: 1.3rem;
+  margin: 10px 0;
+}
+
+.session-card p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.participants {
+  font-weight: 600;
+  color: #333;
+  margin-top: 15px;
+}
+
+.card-actions {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.edit-link {
+  background: #ffc107;
+  color: #212529;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.edit-link:hover {
+  background: #e0a800;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 16px;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.empty-message a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.empty-message a:hover {
+  text-decoration: underline;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 100px;
+  color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-main-info h1 {
+    font-size: 2.5rem;
+  }
+
+  .stats {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .sessions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
