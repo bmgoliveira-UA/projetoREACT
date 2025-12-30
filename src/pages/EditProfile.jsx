@@ -1,22 +1,32 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { currentUser, users } from '../data/userData';
-import '../styles/EditProfile.css';
+import { useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { getUserById, updateUser } from '../data/userData';
+import { getCurrentUser } from '../utils/auth'; // ou onde tens a função
+import '../styles/EditProfile.css'; // ou o teu CSS correspondente
 
 function EditProfile() {
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
+  const userIdFromUrl = parseInt(searchParams.get('userId'));
+  const current = getCurrentUser();
+
+  // Decide qual utilizador editar: o da URL (novo user) ou o logado
+  const userToEdit = userIdFromUrl 
+    ? getUserById(userIdFromUrl) 
+    : current;
+
   const [formData, setFormData] = useState({
-    name: '',
-    bio: '',
-    location: '',
-    sports: [],
-    level: 'Intermédio'
+    name: userToEdit?.name || '',
+    bio: userToEdit?.bio || '',
+    location: userToEdit?.location || '',
+    sports: userToEdit?.sports || [],
+    level: userToEdit?.level || 'Intermédio'
   });
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // já não precisamos de loading inicial
 
   const allSports = [
     "Futebol", "Basquetebol", "Ténis", "Padel", "Corrida", "Ciclismo",
@@ -25,25 +35,10 @@ function EditProfile() {
 
   const levels = ["Principiante", "Intermédio", "Avançado", "Todos os níveis"];
 
-  useEffect(() => {
-    if (!currentUser) {
-      navigate('/login');
-      return;
-    }
-
-    setFormData({
-      name: currentUser.name || '',
-      bio: currentUser.bio || '',
-      location: currentUser.location || '',
-      sports: currentUser.sports || [],
-      level: currentUser.level || 'Intermédio'
-    });
-    setLoading(false);
-  }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -63,7 +58,6 @@ function EditProfile() {
     if (!formData.name.trim()) newErrors.name = 'O nome é obrigatório';
     if (!formData.location.trim()) newErrors.location = 'A localização é obrigatória';
     if (formData.sports.length === 0) newErrors.sports = 'Escolhe pelo menos um desporto';
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -73,27 +67,40 @@ function EditProfile() {
 
     if (!validateForm()) return;
 
-    // Simula atualização do perfil
-    const updatedUser = {
-      ...currentUser,
+    setLoading(true);
+
+    // Prepara os dados atualizados
+    const updatedData = {
+      id: userToEdit.id,
       ...formData
     };
 
-    console.log('Perfil atualizado:', updatedUser);
-    // Em projeto real: atualizarias currentUser ou enviarias para backend
+    // Atualiza no array global (persistência em memória)
+    const updatedUser = updateUser(updatedData);
 
-    setSuccess(true);
+    if (updatedUser) {
+      // Se for o utilizador logado, atualiza também o localStorage
+      if (userToEdit.id === current?.id) {
+        localStorage.setItem('sportconnect_user', JSON.stringify(updatedUser));
+      }
 
-    setTimeout(() => {
-      navigate(`/profile/${currentUser.id}`);
-    }, 2000);
+      setSuccess(true);
+
+      setTimeout(() => {
+        // Redireciona para o perfil público (ou my-profile se preferires)
+        navigate(`/profile/${userToEdit.id}`);
+      }, 2000);
+    } else {
+      alert('Erro ao atualizar perfil');
+      setLoading(false);
+    }
   };
 
   if (loading) {
-    return <div className="loading">A carregar perfil...</div>;
+    return <div className="loading">A guardar perfil...</div>;
   }
 
-  if (!currentUser) {
+  if (!userToEdit) {
     return <div className="not-found">Utilizador não encontrado.</div>;
   }
 
@@ -102,12 +109,6 @@ function EditProfile() {
       <div className="edit-profile-card">
         <h1>Editar Perfil</h1>
         <p className="subtitle">Atualiza as tuas informações pessoais</p>
-
-        {/* Avatar atual (não editável neste projeto simples) */}
-        <div className="current-avatar">
-          <img src={currentUser.avatar} alt={currentUser.name} />
-          <p>Foto de perfil (não editável nesta versão)</p>
-        </div>
 
         {success && (
           <div className="success-message">
@@ -119,7 +120,7 @@ function EditProfile() {
         <form onSubmit={handleSubmit} className="edit-form">
           {/* Nome */}
           <div className="form-group">
-            <label htmlFor="name">Nome *</label>
+            <label htmlFor="name">Nome</label>
             <input
               type="text"
               id="name"
@@ -133,14 +134,14 @@ function EditProfile() {
 
           {/* Localização */}
           <div className="form-group">
-            <label htmlFor="location">Localização *</label>
+            <label htmlFor="location">Localização</label>
             <input
               type="text"
               id="location"
               name="location"
               value={formData.location}
               onChange={handleChange}
-              placeholder="Ex: Lisboa, Porto, Coimbra..."
+              placeholder="Ex: Lisboa, Porto..."
               className={errors.location ? 'error' : ''}
             />
             {errors.location && <span className="error-text">{errors.location}</span>}
@@ -161,7 +162,7 @@ function EditProfile() {
 
           {/* Desportos favoritos */}
           <div className="form-group">
-            <label>Desportos favoritos * (clica para selecionar)</label>
+            <label>Desportos favoritos (clica para selecionar)</label>
             <div className="sports-checkboxes">
               {allSports.map(sport => (
                 <label key={sport} className="sport-checkbox">
@@ -194,10 +195,10 @@ function EditProfile() {
 
           {/* Botões */}
           <div className="form-actions">
-            <button type="submit" className="btn-save">
-              Guardar Alterações
+            <button type="submit" className="btn-save" disabled={loading}>
+              {loading ? 'A guardar...' : 'Guardar Alterações'}
             </button>
-            <Link to={`/profile/${currentUser.id}`} className="btn-cancel">
+            <Link to={`/profile/${userToEdit.id}`} className="btn-cancel">
               Cancelar
             </Link>
           </div>

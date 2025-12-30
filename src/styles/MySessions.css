@@ -1,0 +1,165 @@
+.mysessions-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.mysessions-container h1 {
+  font-size: 2.8rem;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #808080;
+  font-size: 1.3rem;
+  margin-bottom: 50px;
+}
+
+.sessions-section {
+  margin-bottom: 60px;
+}
+
+.sessions-section h2 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+.session-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.session-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.session-sport {
+  background: #667eea;
+  color: white;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.session-card h3 {
+  font-size: 1.4rem;
+  margin: 10px 0;
+}
+
+.session-card p {
+  margin: 8px 0;
+  color: #808080;
+  font-size: 1rem;
+}
+
+.participants {
+  font-weight: 600;
+  color: white;
+  margin-top: 15px;
+}
+
+.card-actions {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.edit-btn {
+  background: #ffc107;
+  color: #212529;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.edit-btn:hover {
+  background: #e0a800;
+}
+
+.creator-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 16px;
+}
+
+.empty-state p {
+  font-size: 1.3rem;
+  color: #808080;
+  margin-bottom: 25px;
+}
+
+.btn-create,
+.btn-explore {
+  background: #667eea;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.btn-explore {
+  color: #667eea !important;
+  border-color: #667eea !important;
+}
+
+.btn-create:hover,
+.btn-explore:hover {
+  background: #5a6fd8;
+  transform: translateY(-3px);
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 100px;
+  color: #808080;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .mysessions-container h1 {
+    font-size: 2.3rem;
+  }
+
+  .sessions-grid {
+    grid-template-columns: 1fr;
+  }
+}

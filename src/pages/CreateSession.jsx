@@ -1,11 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { currentUser } from '../data/userData';
-import { sessions } from '../data/sessionData'; // só para obter o próximo ID
+import { currentUser } from '../data/login';
+import { createSession } from '../utils/sessionUtils'; 
 import '../styles/SessionManagement.css';
+import { getCurrentUser } from '../utils/auth';
+
 
 function CreateSession() {
+  
+  const existCurrentUser = getCurrentUser()
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (existCurrentUser) {
+      navigate('/login')
+    }
+  })
+
+  if (existCurrentUser) {
+    navigate('/login')
+  }
 
   const [formData, setFormData] = useState({
     title: '',
@@ -20,6 +34,7 @@ function CreateSession() {
 
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const sportsList = [
     "Futebol", "Basquetebol", "Ténis", "Padel", "Corrida", "Ciclismo",
@@ -31,7 +46,8 @@ function CreateSession() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    // Limpa erro do campo ao escrever
+
+    // Clear error when user types
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -39,19 +55,20 @@ function CreateSession() {
 
   const validateForm = () => {
     const newErrors = {};
+
     if (!formData.title.trim()) newErrors.title = 'O título é obrigatório';
     if (!formData.sport) newErrors.sport = 'Escolhe um desporto';
     if (!formData.date) newErrors.date = 'A data é obrigatória';
     if (!formData.time) newErrors.time = 'A hora é obrigatória';
     if (!formData.location.trim()) newErrors.location = 'A localização é obrigatória';
     if (!formData.description.trim()) newErrors.description = 'A descrição é obrigatória';
-    if (formData.maxParticipants < 2) newErrors.maxParticipants = 'Mínimo 2 participantes';
+    if (parseInt(formData.maxParticipants) < 2) newErrors.maxParticipants = 'Mínimo 2 participantes';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -61,31 +78,31 @@ function CreateSession() {
       return;
     }
 
-    // Simula criação de nova sessão
-    const newSession = {
-      id: sessions.length > 0 ? Math.max(...sessions.map(s => s.id)) + 1 : 1,
-      ...formData,
-      creatorId: currentUser.id,
-      creatorName: currentUser.name,
-      participants: [currentUser.id], // o criador já está inscrito
-      maxParticipants: parseInt(formData.maxParticipants)
-    };
+    setLoading(true);
+    setSuccess(false);
 
-    // Em projeto real: enviarias para backend ou Context
-    // Aqui só simulamos com console e alerta
-    console.log('Nova sessão criada:', newSession);
-    // sessions.push(newSession); // não faças isto diretamente (imutável), mas para demo ok
+    try {
+      const newSession = await createSession(formData); // now Promise-based
 
-    setSuccess(true);
-
-    setTimeout(() => {
-      navigate(`/session/${newSession.id}`);
-    }, 2000);
+      if (newSession) {
+        setSuccess(true);
+        setTimeout(() => {
+          navigate(`/session/${newSession}`);
+        }, 1500);
+      } else {
+        alert('Erro ao criar a sessão. Tenta novamente.');
+      }
+    } catch (error) {
+      console.error('Erro inesperado:', error);
+      alert('Ocorreu um erro inesperado');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="create-session-container">
-      <div className="create-session-card">
+    <div className="session-form-container">
+      <div className="session-form-card">
         <h1>Criar Nova Sessão Desportiva</h1>
         <p className="subtitle">Convida pessoas para praticar {formData.sport || 'desporto'} contigo!</p>
 
@@ -96,7 +113,7 @@ function CreateSession() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="create-form">
+        <form onSubmit={handleSubmit} className="session-form">
           {/* Título */}
           <div className="form-group">
             <label htmlFor="title">Título da Sessão *</label>
@@ -192,7 +209,7 @@ function CreateSession() {
 
           {/* Máximo de participantes e nível */}
           <div className="form-row">
-            <div className="form-group">
+            <div className="form-group form-group-pair">
               <label htmlFor="maxParticipants">Máximo de Participantes</label>
               <input
                 type="number"
@@ -206,7 +223,7 @@ function CreateSession() {
               {errors.maxParticipants && <span className="error-text">{errors.maxParticipants}</span>}
             </div>
 
-            <div className="form-group">
+            <div className="form-group form-group-pair">
               <label htmlFor="level">Nível Recomendado</label>
               <select
                 id="level"
@@ -223,7 +240,7 @@ function CreateSession() {
 
           {/* Botões */}
           <div className="form-actions">
-            <button type="submit" className="btn-create">
+            <button type="submit" className="btn-save">
               Criar Sessão
             </button>
             <Link to="/explore" className="btn-cancel">

@@ -1,41 +1,46 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
-import Logo from '../assets/react.svg'
-import '../data/login.js'
+import '../styles/GeneralStyles.css';
+import Logo from '../components/Logo.jsx'
+import { login } from '../utils/auth.js'
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const navigate = useNavigate()
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password)
+    setError('');
     
     if (!email || !password) {
-      setError('Preenche ambos os campos');
-      return;
+        setError('Preenche ambos os campos');
+        return;
     }
+    
+    const user = login(email, password)
 
-    console.log('Login attempt:', { email, password });
-    setError('');
-
+    if (user) {
+        console.log(user);
+        navigate('/')
+    } else {
+        setError('Dados Incorretos')
+    }
   };
 
   return (
-    <div className='login-general-container'>
+    <div className='auth-container'>
         <div className='logo-container'>
             <div className='logo-adjustment'>
-                <Link to='/' className='logo'>
-                    <img src={Logo} alt=""/>
-                </Link>
+                <Logo />
                 <p className='logo-frase'>Build Friendships <br /> Start Sporting</p>
             </div>
         </div>
-        <div className='auth-container'>
-            <div className='auth-card'>
+        <div className='card-container'>
+            <div className='card'>
                 <h1>Iniciar Sessão</h1>
                 <p className='subtitle'>Encontra parceiros para o teu desporto favorito</p>
 
@@ -45,7 +50,7 @@ const handleSubmit = (e) => {
                 {error && <p className='error-message'>{error}</p>}
 
                 {/* Email */}
-                <div className='auth-input-container' id='email-container'>
+                <div className='input-container' id='email-container'>
                         <label htmlFor="email">
                             Email
                             <input
@@ -55,13 +60,13 @@ const handleSubmit = (e) => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                className='auth-input'
+                                className='input'
                             />
                         </label>
                     </div>
 
                 {/* Password */}
-                <div className='auth-input-container' id='password-container'>
+                <div className='input-container' id='password-container'>
                     <label htmlFor='password'>
                         Password
                         <input
@@ -71,7 +76,7 @@ const handleSubmit = (e) => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            className='auth-input'
+                            className='input'
                         />
                     </label>
                 </div>

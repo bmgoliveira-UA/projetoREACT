@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { users } from '../data/userData';
 import { sessions } from '../data/sessionData';
-import '../styles/PublicProfile.css';
+import '../styles/Profile.css';
 
 function PublicProfile() {
   const { id } = useParams(); // :id da rota
@@ -39,12 +39,13 @@ function PublicProfile() {
   return (
     <div className="profile-container">
       <div className="profile-header">
-        <img src={user.avatar} alt={user.name} className="profile-avatar" />
-        <div className="profile-info">
-          <h1>{user.name}</h1>
-          <p className="username">@{user.username}</p>
-          <p className="location">📍 {user.location}</p>
-          <p className="level">Nível: {user.level}</p>
+        <div className="user-info-container">
+          <img src={user.avatar} alt={user.name} className="profile-avatar" />
+          <div className="username-location">
+            <h1>{user.name}</h1>
+            <p className="username">@{user.username}</p>
+            <p className="location">📍 {user.location}</p>
+          </div>
         </div>
       </div>
 
@@ -52,19 +53,20 @@ function PublicProfile() {
       <div className="profile-bio">
         <h2>Sobre mim</h2>
         <p>{user.bio || 'Este utilizador ainda não adicionou uma bio.'}</p>
-      </div>
-
-      {/* Desportos favoritos */}
-      <div className="profile-sports">
-        <h2>Desportos favoritos</h2>
-        <div className="sports-tags">
-          {user.sports.map((sport, index) => (
-            <span key={index} className="sport-tag">
-              {sport}
-            </span>
-          ))}
+        {/* Desportos favoritos */}
+        <div className="profile-sports">
+          <h2>Desportos favoritos</h2>
+          <div className="sports-tags">
+            {user.sports.map((sport, index) => (
+              <span key={index} className="sport-tag">
+                {sport}
+              </span>
+            ))}
+          </div>
+          <p className="level">Nível geral: <strong>{user.level}</strong></p>
         </div>
       </div>
+
 
       {/* Sessões criadas */}
       <div className="profile-sessions">

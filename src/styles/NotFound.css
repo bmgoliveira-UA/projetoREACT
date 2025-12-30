@@ -1,0 +1,101 @@
+.notfound-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  width: 100vw;
+  margin: 0;
+}
+
+.notfound-content {
+  max-width: 600px;
+  padding: 0 20px;
+}
+
+.notfound-content h1 {
+  font-size: 8rem;
+  font-weight: 900;
+  margin: 0;
+  line-height: 0.9;
+  color: white;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.notfound-content h2 {
+  font-size: 2.5rem;
+  margin: 20px 0 15px;
+}
+
+.notfound-content p {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.notfound-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.btn-home,
+.btn-explore {
+  padding: 16px 40px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-home {
+  background: white;
+  color: #667eea;
+}
+
+.btn-home:hover {
+  background: #f0f0f0;
+  transform: translateY(-3px);
+}
+
+.btn-explore {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-explore:hover {
+  background: white;
+  color: #667eea;
+}
+
+.fun-fact {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .notfound-content h1 {
+    font-size: 6rem;
+  }
+
+  .notfound-content h2 {
+    font-size: 2rem;
+  }
+
+  .notfound-actions {
+    flex-direction: column;
+  }
+}

@@ -1,6 +1,6 @@
-.myprofile-container {
+.profile-container {
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 75px auto 40px auto;
   padding: 0 20px;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -8,9 +8,17 @@
 .profile-header {
   display: flex;
   align-items: center;
+  flex-direction: column;
   gap: 50px;
   margin-bottom: 50px;
   flex-wrap: wrap;
+}
+
+.user-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6rem;
 }
 
 .profile-avatar {
@@ -22,10 +30,10 @@
   box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
-.profile-main-info h1 {
+.username-location h1 {
   font-size: 3rem;
   margin: 0 0 10px 0;
-  color: #333;
+  color: white;
 }
 
 .username {
@@ -44,7 +52,7 @@
 .stats {
   display: flex;
   gap: 40px;
-  margin: 30px 0;
+  margin-bottom: 30px;
   flex-wrap: wrap;
 }
 
@@ -60,11 +68,12 @@
 }
 
 .stat span {
-  color: #666;
+  color: #808080;
   font-size: 1rem;
 }
 
 .btn-edit {
+  justify-content: flex-end;
   background: #ffc107;
   color: #212529;
   padding: 14px 30px;
@@ -86,7 +95,7 @@
   background: #f8f9fa;
   padding: 25px;
   border-radius: 16px;
-  margin-bottom: 40px;
+  margin: 15px 0 40px 0;
 }
 
 .profile-bio h2 {
@@ -103,12 +112,13 @@
 
 /* Desportos */
 .profile-sports {
-  margin-bottom: 50px;
+  margin: 35px 0 20px 0;
 }
 
 .profile-sports h2 {
+  text-align: left !important;
   font-size: 1.8rem;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   color: #333;
 }
 
@@ -133,8 +143,16 @@
 }
 
 /* Sessões */
+.profile-sessions h2 {
+  color: white;
+}
+
 .profile-sessions-section {
   margin-bottom: 60px;
+}
+
+.profile-sessions-section h2{
+  color: white;
 }
 
 .section-header {
@@ -146,8 +164,8 @@
 
 .section-header h2 {
   font-size: 2rem;
-  color: #333;
-  margin: 0;
+  color: white;
+  margin: 40px 0 20px;
 }
 
 .btn-create-small {
@@ -176,7 +194,7 @@
   padding: 20px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.08);
   text-decoration: none;
-  color: #333;
+  color: white;
   transition: all 0.3s;
 }
 
@@ -203,13 +221,13 @@
 
 .session-card p {
   margin: 8px 0;
-  color: #666;
+  color: #808080;
   font-size: 0.95rem;
 }
 
 .participants {
   font-weight: 600;
-  color: #333;
+  color: white;
   margin-top: 15px;
 }
 
@@ -238,7 +256,7 @@
   padding: 40px;
   background: #f8f9fa;
   border-radius: 16px;
-  color: #666;
+  color: #808080;
   font-size: 1.2rem;
 }
 
@@ -256,7 +274,11 @@
   text-align: center;
   font-size: 1.5rem;
   padding: 100px;
-  color: #666;
+  color: #808080;
+}
+
+.back-link {
+  margin-top: 30px;
 }
 
 /* Responsivo */
@@ -266,9 +288,19 @@
     text-align: center;
   }
 
+  .user-info-container {
+    flex-direction: column;
+    gap: 0px;
+  }
+
   .profile-avatar {
     width: 150px;
     height: 150px;
+  }
+
+  .profile-main-info {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .profile-main-info h1 {

@@ -12,21 +12,23 @@
 
 .explore-header h1 {
   font-size: 3rem;
-  color: #333;
+  color: white;
   margin-bottom: 10px;
 }
 
 .explore-header p {
   font-size: 1.3rem;
-  color: #666;
+  color: #808080;
 }
 
 /* Barra de filtros */
 .filters-bar {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
   gap: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
   align-items: center;
   background: #f8f9fa;
   padding: 20px;
@@ -36,24 +38,36 @@
 .search-input {
   position: relative;
   flex: 1;
-  min-width: 250px;
+  max-width: 80%;
+  margin-inline: auto;
+  box-sizing: border-box;
 }
 
 .search-input input {
   width: 100%;
-  padding: 14px 45px 14px 16px;
+  padding: 14px 50px 14px 16px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 .search-icon {
   position: absolute;
-  right: 15px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.4rem;
   color: #999;
+  pointer-events: none;
+}
+
+.search-select-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.3rem;
 }
 
 .filters-bar select {
@@ -63,9 +77,15 @@
   font-size: 16px;
   background: white;
   min-width: 180px;
+  color: #333;
 }
 
-.btn-create {
+.explore-btn-create-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.explore-btn-create {
   background: #667eea;
   color: white;
   padding: 14px 24px;
@@ -75,7 +95,7 @@
   transition: background 0.3s;
 }
 
-.btn-create:hover {
+.explore-btn-create:hover {
   background: #5a6fd8;
 }
 
@@ -140,7 +160,7 @@
 
 .session-details p {
   margin: 8px 0;
-  color: #666;
+  color: #808080;
   font-size: 0.95rem;
 }
 
@@ -155,7 +175,7 @@
 .no-results {
   text-align: center;
   padding: 80px 20px;
-  color: #666;
+  color: #808080;
 }
 
 .no-results p {
@@ -172,13 +192,12 @@
   text-decoration: none;
   font-size: 1.1rem;
   display: inline-block;
-  margin-top: 20px;
 }
 
 .loading {
   text-align: center;
   font-size: 1.3rem;
-  color: #666;
+  color: #808080;
   padding: 60px;
 }
 
@@ -189,15 +208,26 @@
     align-items: stretch;
   }
 
-  .search-input {
-    min-width: auto;
-  }
-
-  .filters-bar select {
-    min-width: auto;
-  }
-
+  
   .explore-header h1 {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-width:885px) {
+  .explore-btn-create-container {
+    width: 100%;
+  }
+
+  .explore-btn-create {
+    justify-content: flex-end;
+  }
+
+  .search-input {
+    min-width: 100%;
+  }
+  
+  .filters-bar select {
+    min-width: 100%;
   }
 }

@@ -1,0 +1,189 @@
+.header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;    /* logo à esquerda, hamburger/menu à direita */
+  align-items: center;
+  height: 70px;
+  position: relative;
+}
+
+/* Logo sempre à esquerda, visível em todos os tamanhos */
+.logo-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Menu principal */
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Lista de links */
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-list li a,
+.nav-list li .menu-toggle {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-list li a:hover,
+.nav-list li .menu-toggle:hover {
+  color: #667eea;
+}
+
+.register-link {
+  background: #667eea;
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.register-link:hover {
+  background: #5a6fd8;
+  transform: translateY(-2px);
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Hamburger - só visível em mobile */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 1rem 1.4rem;
+}
+
+/* Estilo do hamburger */
+.hamburger {
+  width: 28px;
+  height: 3px;
+  background: #333;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 3px;
+  background: #333;
+  left: 0;
+  transition: all 0.3s;
+}
+
+.hamburger::before { top: -5px; left: -12px;}
+.hamburger::after { top: 5px; left: -12px;}
+
+.hamburger.open {
+  background: transparent;
+}
+
+.hamburger.open::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.hamburger.open::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 1100px) {
+  .menu-toggle {
+    display: block;
+    margin-right: 0.9rem;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    padding: 80px 20px 20px;
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  .nav.active {
+    transform: translateX(0);
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .nav-list li a,
+  .nav-list li .menu-toggle {
+    font-size: 1.3rem;
+    padding: 12px 0;
+    width: 100%;
+  }
+
+  .logout-btn {
+    width: 100%;
+    text-align: left;
+    padding: 12px 0;
+    border: none;
+    background: none;
+    color: #e74c3c;
+    font-size: 1.3rem;
+  }
+
+  /* Logo fica fixo à esquerda, mesmo com menu aberto */
+  .header-container {
+    justify-content: flex-start;
+  }
+
+  .logo-wrapper {
+    flex: 1;
+  }
+}

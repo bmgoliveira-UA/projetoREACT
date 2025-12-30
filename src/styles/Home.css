@@ -2,6 +2,11 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+
+.home-container h2 {
+  color: white;
+}
+
 /* Hero */
 .hero {
   display: flex;
@@ -77,13 +82,15 @@
 
 /* Seções gerais */
 .container {
+  display: flex;
+  flex-direction: column;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 section {
-  padding: 80px 0;
+  padding: 45px 0;
 }
 
 h2 {
@@ -94,9 +101,15 @@ h2 {
 }
 
 /* Desportos */
-.sports-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+
+.sports-container > h2 {
+  color: white;
+}
+
+.sports {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -122,13 +135,18 @@ h2 {
 }
 
 /* Sessões */
-.sessions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.sessions-container {
+  align-items: center;
+}
+
+.sessions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 30px;
 }
 
-.session-card {
+.home-session-card {
   background: white;
   border-radius: 12px;
   padding: 24px;
@@ -136,9 +154,11 @@ h2 {
   transition: all 0.3s;
   text-decoration: none;
   color: #333;
+  width: 335px;
+  height: 260px;
 }
 
-.session-card:hover {
+.home-session-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
@@ -151,7 +171,7 @@ h2 {
 
 .session-info {
   margin: 8px 0;
-  color: #666;
+  color: #808080;
   font-size: 0.95rem;
 }
 
@@ -181,11 +201,12 @@ h2 {
 
 .cta-section h2 {
   margin-bottom: 20px;
+  color: #333;
 }
 
 .cta-section p {
   font-size: 1.2rem;
-  color: #666;
+  color: #808080;
   margin-bottom: 40px;
 }
 
@@ -197,7 +218,7 @@ h2 {
 .loading {
   text-align: center;
   font-size: 1.2rem;
-  color: #666;
+  color: #808080;
 }
 
 /* Responsivo */

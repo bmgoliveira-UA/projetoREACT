@@ -1,18 +1,18 @@
-.create-session-container {
+.session-form-container {
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px;
   font-family: 'Segoe UI', sans-serif;
 }
 
-.create-session-card {
+.session-form-card {
   background: white;
   border-radius: 16px;
   padding: 40px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.1);
 }
 
-.create-session-card h1 {
+.session-form-card h1 {
   font-size: 2.5rem;
   text-align: center;
   color: #333;
@@ -21,15 +21,19 @@
 
 .subtitle {
   text-align: center;
-  color: #666;
+  color: #808080;
   font-size: 1.2rem;
   margin-bottom: 40px;
 }
 
-.create-form {
+.session-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.form-group-pair{
+  width: 50%;
 }
 
 .form-group label {
@@ -49,6 +53,8 @@
   font-size: 16px;
   background: #fafafa;
   transition: all 0.2s;
+  color: #333;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -65,8 +71,8 @@
 }
 
 .form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
   gap: 20px;
 }
 
@@ -88,7 +94,7 @@
   justify-content: center;
 }
 
-.btn-create {
+.btn-save {
   background: #667eea;
   color: white;
   padding: 16px 40px;
@@ -100,7 +106,7 @@
   transition: all 0.3s;
 }
 
-.btn-create:hover {
+.btn-save:hover {
   background: #5a6fd8;
   transform: translateY(-3px);
 }
@@ -137,15 +143,11 @@
     padding: 30px 20px;
   }
 
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
   .form-actions {
     flex-direction: column;
   }
 
-  .btn-create,
+  .btn-save,
   .btn-cancel {
     width: 100%;
   }

@@ -126,7 +126,7 @@
 
 .session-card p {
   margin: 8px 0;
-  color: #666;
+  color: #808080;
   font-size: 0.95rem;
 }
 
@@ -142,7 +142,7 @@
   text-align: center;
   font-size: 1.5rem;
   padding: 100px;
-  color: #666;
+  color: #808080;
 }
 
 .back-link {

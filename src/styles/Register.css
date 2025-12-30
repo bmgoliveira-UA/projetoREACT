@@ -1,0 +1,188 @@
+/* Container principal (split-screen igual ao Login) */
+
+.logo-container {
+  width: 50vw;
+  margin-inline: auto;
+}
+
+.logo-adjustment {
+  width: 50%;
+  margin-inline: auto;
+}
+
+.logo {
+  width: 15%;
+}
+
+.logo img {
+  width: 6rem;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.logo-frase {
+  font-size: 2.7rem;
+  color: white;
+  margin-top: 1.5rem;
+}
+
+/* Container do formulário (mesmo gradiente e layout do Login) */
+
+.register-card h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: #808080;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+/* Formulário - usa as classes gerais do GeneralStyles.css */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Botão Google (igual ao Login) */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 20px 0;
+}
+
+.google-btn:hover {
+  background: #f9f9f9;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Botão principal de registo (igual ao login-btn do Login) */
+.register-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.register-btn:hover {
+  background: #5a6fd8;
+}
+
+.register-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Link para login (igual ao signup-link do Login) */
+.login-link {
+  margin-top: 20px;
+  color: #808080;
+  font-size: 15px;
+  text-align: center;
+}
+
+.login-link a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Termos (igual ao Login) */
+.terms {
+  margin-top: 32px;
+  font-size: 13px;
+  color: #888;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.terms a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* Mensagem de sucesso */
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+/* RESPONSIVO - exatamente igual ao Login */
+@media (max-width: 480px) {
+  .register-card {
+    padding: 40px 24px;
+  }
+
+  .register-card h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo-container,
+  .register-container {
+    width: 100vw;
+  }
+
+  .register-container {
+    min-height: 95vh;
+  }
+
+  .logo img {
+    width: 3.6rem;
+    display: block;
+    margin-bottom: 3rem;
+  }
+
+  .logo-frase {
+    display: none;
+  }
+
+  .logo-adjustment {
+    margin-top: 2rem;
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .register-container {
+    padding: 0;
+  }
+}

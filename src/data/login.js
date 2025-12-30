@@ -10,3 +10,14 @@ export const loginCredentials = [
   { userId: 9, email: "user9@email.com", password: "password" },
   { userId: 10, email: "user10@email.com", password: "password" }
 ];
+
+export let currentUser = null;
+
+export const setCurrentUser = (currentUsarData) => {
+  currentUser = currentUsarData
+}
+
+
+export function addLoginCredential(userId, email, password) {
+  loginCredentials.push({ userId, email, password });
+}

@@ -118,10 +118,40 @@ export const users = [
   }
 ];
 
-// Algumas sessões de exemplo (podes adicionar mais se quiseres)
-export const sessions = [
-  // ... (mantém as sessões que já tinhas ou adiciona novas)
-];
+let nextUserId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
 
-// Utilizador atualmente logado (podes mudar o ID para testar diferentes perfis)
-export const currentUser = users[0]; // por defeito o user 1
+export function addUser(newUserData) {
+  const newUser = {
+    id: nextUserId++,
+    username: newUserData.email.split('@')[0], // gera username automático (podes alterar)
+    name: newUserData.name,
+    email: newUserData.email,
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg", // avatar padrão (podes mudar)
+    bio: "",
+    location: "",
+    sports: [],
+    level: "Intermédio"
+  };
+
+  users.push(newUser);
+  return newUser;
+}
+
+export function getUserById(id) {
+  return users.find(u => u.id === id);
+}
+
+
+export function updateUser(updatedUser) {
+  const index = users.findIndex(u => u.id === updatedUser.id);
+  if (index !== -1) {
+    users[index] = {
+      ...users[index],  // mantém dados antigos
+      ...updatedUser    // sobrescreve com novos
+    };
+    console.log('Utilizador atualizado:', users[index]);
+    return users[index];
+  }
+  console.warn('Utilizador não encontrado para atualização');
+  return null;
+}

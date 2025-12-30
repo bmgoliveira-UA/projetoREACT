@@ -1,0 +1,31 @@
+.footer {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  padding: 40px 20px;
+  margin-top: auto; /* empurra para o fundo se o conteúdo for curto */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.copyright {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #b0b0b0;
+}
+
+.made-with {
+  font-size: 0.9rem;
+  color: #667eea;
+  opacity: 0.8;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 15px;
+  }
+}

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { sessions, sports } from '../data/userData';
+import { sports } from '../data/userData';
+import { sessions } from '../data/sessionData';
 import { useState, useEffect } from 'react';
 import '../styles/Home.css'; // vamos criar o CSS depois
 
@@ -12,7 +13,7 @@ function Home() {
     setTimeout(() => {
       // Mostra as 6 sessões mais recentes ou aleatórias
       const shuffled = [...sessions].sort(() => 0.5 - Math.random());
-      setFeaturedSessions(shuffled.slice(0, 6));
+      setFeaturedSessions(shuffled.slice(0, 4));
       setLoading(false);
     }, 600);
   }, []);
@@ -47,7 +48,7 @@ function Home() {
       <section className="sports-section">
         <div className="container">
           <h2>Desportos Populares</h2>
-          <div className="sports-grid">
+          <div className="sports">
             {sports.slice(0, 8).map((sport, index) => (
               <Link key={index} to={`/explore?sport=${sport}`} className="sport-card">
                 <div className="sport-icon">
@@ -71,17 +72,17 @@ function Home() {
 
       {/* Sessões em Destaque */}
       <section className="featured-sessions">
-        <div className="container">
+        <div className="container sessions-container">
           <h2>Sessões em Destaque</h2>
           {loading ? (
             <p className="loading">A carregar sessões...</p>
           ) : (
-            <div className="sessions-grid">
+            <div className="sessions">
               {featuredSessions.length === 0 ? (
                 <p>Ainda não há sessões criadas. Sê o primeiro a criar uma!</p>
               ) : (
                 featuredSessions.map(session => (
-                  <Link key={session.id} to={`/session/${session.id}`} className="session-card">
+                  <Link key={session.id} to={`/session/${session.id}`} className="home-session-card">
                     <div className="session-sport">{session.sport}</div>
                     <h3>{session.title}</h3>
                     <p className="session-info">

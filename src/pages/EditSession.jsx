@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { currentUser } from '../data/userData';
+import { currentUser } from '../data/login';
 import { sessions } from '../data/sessionData';
 import '../styles/SessionManagement.css'; // reutiliza o mesmo CSS da CreateSession com pequenas alterações
 
@@ -120,8 +120,8 @@ function EditSession() {
   }
 
   return (
-    <div className="edit-session-container">
-      <div className="edit-session-card">
+    <div className="session-form-container">
+      <div className="session-form-card">
         <h1>Editar Sessão</h1>
         <p className="subtitle">Modifica os detalhes da tua sessão de {formData.sport || 'desporto'}</p>
 
@@ -132,7 +132,7 @@ function EditSession() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="edit-form">
+        <form onSubmit={handleSubmit} className="session-form">
           {/* Os campos são iguais ao CreateSession */}
           <div className="form-group">
             <label htmlFor="title">Título da Sessão *</label>

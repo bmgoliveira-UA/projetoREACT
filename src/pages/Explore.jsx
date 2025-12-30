@@ -31,7 +31,11 @@ function Explore() {
       filtered = filtered.filter(session =>
         session.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         session.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        session.location.toLowerCase().includes(searchTerm.toLowerCase())
+        session.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        session.creatorName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        session.date.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        session.time.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        session.description.toLowerCase().includes(searchTerm.toLowerCase()) 
       );
     }
 
@@ -73,23 +77,28 @@ function Explore() {
           <span className="search-icon">🔍</span>
         </div>
 
-        <select value={selectedSport} onChange={(e) => setSelectedSport(e.target.value)}>
-          <option value="todos">Todos os desportos</option>
-          {sports.map(sport => (
-            <option key={sport} value={sport}>{sport}</option>
-          ))}
-        </select>
+        <div className='search-select-btn'>
+          
+          <select value={selectedSport} onChange={(e) => setSelectedSport(e.target.value)}>
+            <option value="todos">Todos os desportos</option>
+            {sports.map(sport => (
+              <option key={sport} value={sport}>{sport}</option>
+            ))}
+          </select>
 
-        <select value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)}>
-          <option value="todos">Todas as localizações</option>
-          {locations.map(loc => (
-            <option key={loc} value={loc}>{loc}</option>
-          ))}
-        </select>
+          <select value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)}>
+            <option value="todos">Todas as localizações</option>
+            {locations.map(loc => (
+              <option key={loc} value={loc}>{loc}</option>
+            ))}
+          </select>
+            <div className='explore-btn-create-container'>
+              <Link to="/create" className="explore-btn-create">
+                + Criar Sessão
+              </Link>
+            </div>
 
-        <Link to="/create" className="btn-create">
-          + Criar Sessão
-        </Link>
+        </div>
       </div>
 
       {/* Conteúdo */}

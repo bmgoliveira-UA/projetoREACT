@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { currentUser } from '../data/userData';
+import { currentUser } from '../data/login';
 import { sessions } from '../data/sessionData';
-import '../styles/MyProfile.css';
+import '../styles/Profile.css';
 
 function MyProfile() {
   const navigate = useNavigate();
@@ -41,13 +41,17 @@ function MyProfile() {
   const totalSessions = createdSessions.length + joinedSessions.length;
 
   return (
-    <div className="myprofile-container">
+    <div className="profile-container">
       <div className="profile-header">
-        <img src={currentUser.avatar} alt={currentUser.name} className="profile-avatar" />
+        <div className="user-info-container">
+          <img src={currentUser.avatar} alt={currentUser.name} className="profile-avatar" />
+          <div className="user-name-location">
+            <h1>{currentUser.name}</h1>
+            <p className="username">@{currentUser.username}</p>
+            <p className="location">📍 {currentUser.location}</p>
+          </div>
+        </div>
         <div className="profile-main-info">
-          <h1>{currentUser.name}</h1>
-          <p className="username">@{currentUser.username}</p>
-          <p className="location">📍 {currentUser.location}</p>
           <div className="stats">
             <div className="stat">
               <strong>{createdSessions.length}</strong>
@@ -62,7 +66,7 @@ function MyProfile() {
               <span>Total de atividades</span>
             </div>
           </div>
-          <Link to="/edit-profile" className="btn-edit">
+          <Link to="/profile/edit" className="btn-edit">
             ✏️ Editar Perfil
           </Link>
         </div>
@@ -73,25 +77,23 @@ function MyProfile() {
         <div className="profile-bio">
           <h2>Sobre mim</h2>
           <p>{currentUser.bio}</p>
+          {/* Desportos favoritos */}
+          <div className="profile-sports">
+            <h2>Desportos favoritos</h2>
+            <div className="sports-tags">
+              {currentUser.sports.map((sport, index) => (
+                <span key={index} className="sport-tag">{sport}</span>
+              ))}
+            </div>
+            <p className="level">Nível geral: <strong>{currentUser.level}</strong></p>
+          </div>
         </div>
       )}
-
-      {/* Desportos favoritos */}
-      <div className="profile-sports">
-        <h2>Desportos favoritos</h2>
-        <div className="sports-tags">
-          {currentUser.sports.map((sport, index) => (
-            <span key={index} className="sport-tag">{sport}</span>
-          ))}
-        </div>
-        <p className="level">Nível geral: <strong>{currentUser.level}</strong></p>
-      </div>
 
       {/* Sessões criadas */}
       <div className="profile-sessions-section">
         <div className="section-header">
           <h2>Minhas Sessões Criadas ({createdSessions.length})</h2>
-          <Link to="/create" className="btn-create-small">+ Criar Nova</Link>
         </div>
 
         {createdSessions.length === 0 ? (
@@ -105,7 +107,7 @@ function MyProfile() {
               <Link key={session.id} to={`/session/${session.id}`} className="session-card">
                 <div className="session-sport">{session.sport}</div>
                 <h3>{session.title}</h3>
-                <p>📅 {formatDatePT ? formatDatePT(session.date) : session.date} às {session.time}</p>
+                <p>📅 {session?.date || 'Data não definida'} às {session?.time || 'Hora não definida'}</p>
                 <p>📍 {session.location}</p>
                 <p className="participants">
                   👥 {session.participants.length}/{session.maxParticipants} participantes
@@ -136,7 +138,7 @@ function MyProfile() {
               <Link key={session.id} to={`/session/${session.id}`} className="session-card">
                 <div className="session-sport">{session.sport}</div>
                 <h3>{session.title}</h3>
-                <p>📅 {formatDatePT ? formatDatePT(session.date) : session.date} às {session.time}</p>
+                <p>📅 {session?.date || 'Data não definida'} às {session?.time || 'Hora não definida'}</p>
                 <p>📍 {session.location}</p>
                 <p className="participants">
                   👥 {session.participants.length}/{session.maxParticipants} participantes

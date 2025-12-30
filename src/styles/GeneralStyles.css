@@ -1,0 +1,76 @@
+/* auth container logo */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+/* authentication inputs */
+
+.input {
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #fafafa;
+  transition: border 0.2s, background 0.2s;
+  align-items: baseline;
+  display: flex;
+  margin-top: 5px;
+  width: calc(100% - 35px);
+  color: black;
+}
+
+.input-container {
+    /* color: black; */
+    text-align: left;
+}
+
+.input-container > label {
+    font-weight: 500;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+}
+
+
+/* Logo style */
+
+.card-container {
+  width: 50vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif, Arial, Helvetica;
+}
+
+.card {
+  color: black;
+  background: white;
+  border-radius: 16px;
+  padding: 48px 40px;
+  max-width: 360px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .auth-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-container {
+      width: 100%;
+    }
+    
+    .card{
+      margin: 1rem;
+    }
+  }

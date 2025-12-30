@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom"
-
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 
 const Layout = () => {
@@ -8,13 +9,13 @@ const Layout = () => {
     
     return <div>
         <header>
-            Cabeçalho
+            <Header />
         </header>
         <main>
             <Outlet />
         </main>
         <footer>
-            Rodapé
+            <Footer />
         </footer>
     </div>
 }

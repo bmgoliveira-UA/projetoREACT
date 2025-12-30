@@ -40,15 +40,6 @@
   font-family: 'Segoe UI', sans-serif, Arial, Helvetica;
 }
 
-.auth-card {
-  background: white;
-  border-radius: 16px;
-  padding: 48px 40px;
-  width: 100%;
-  max-width: 360px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  text-align: center;
-}
 
 .auth-card h1 {
   font-size: 32px;
@@ -58,7 +49,7 @@
 }
 
 .subtitle {
-  color: #666;
+  color: #808080;
   font-size: 16px;
   margin-bottom: 40px;
 }
@@ -187,7 +178,7 @@
 .login-link,
 .signup-link {
   margin-top: 20px;
-  color: #666;
+  color: #808080;
   font-size: 15px;
   text-align: center;
 }
@@ -241,16 +232,11 @@
     }
 
     .auth-container {
-        background: none;
         min-height: 95vh;
     }
 
     .login-general-container {
         display: block;
-    }
-
-    .logo {
-        margin-inline: auto;
     }
 
     .logo img {

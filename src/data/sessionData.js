@@ -1,6 +1,6 @@
-// src/data/sessionData.js
+import { KEYS } from "../config/constants";
 
-export const sessions = [
+export const initialSessions = [
   {
     id: 1,
     title: "Corrida Matinal no Parque da Cidade",
@@ -142,3 +142,14 @@ export const sessions = [
     level: "Principiante a Intermédio"
   }
 ];
+
+
+const savedSessions = localStorage.getItem(KEYS.SESSIONS);
+
+export const sessions = savedSessions 
+  ? JSON.parse(savedSessions) 
+  : [...initialSessions]; 
+
+export const saveSessions = () => {
+  localStorage.setItem('sportconnect_sessions', JSON.stringify(sessions));
+};

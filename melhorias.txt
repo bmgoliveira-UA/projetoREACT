@@ -1,0 +1,7 @@
+Possíveis melhorias a implementar:
+
+1- chat (usar websockets)
+2- relações entre utilizadores (relação nodes)
+3- sistema de rankings
+4- equipas
+5- zonas de domínio (equipas podem ir desafiar equipas com um ranquing superior noutros campos, ou rotas de corrida)

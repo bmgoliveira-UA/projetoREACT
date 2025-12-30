@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { sessions } from '../data/sessionData';
-import { users, currentUser } from '../data/userData';
+import { users } from '../data/userData';
+import { currentUser } from '../data/login'
+
 import '../styles/SessionDetail.css';
 
 function SessionDetail() {
@@ -71,28 +73,28 @@ function SessionDetail() {
         <div className="session-level">{session.level}</div>
       </div>
 
-      <h1>{session.title}</h1>
+      <h1 className='session-detail-text'>{session.title}</h1>
 
       <div className="session-meta">
-        <p>📍 <strong>Localização:</strong> {session.location}</p>
-        <p>📅 <strong>Data:</strong> {session.date} às {session.time}</p>
-        <p>👥 <strong>Participantes:</strong> {session.participants.length} / {session.maxParticipants}</p>
+        <p className='session-detail-text'>📍 <strong>Localização:</strong> {session.location}</p>
+        <p className='session-detail-text'>📅 <strong>Data:</strong> {session.date} às {session.time}</p>
+        <p className='session-detail-text'>👥 <strong>Participantes:</strong> {session.participants.length} / {session.maxParticipants}</p>
       </div>
 
       <div className="session-description">
-        <h2>Descrição</h2>
-        <p>{session.description}</p>
+        <h2 className='session-detail-text'>Descrição</h2>
+        <p className='session-detail-text'>{session.description}</p>
       </div>
 
       {/* Criador da sessão */}
       {creator && (
         <div className="creator-section">
-          <h2>Organizador</h2>
+          <h2 className='session-detail-text'>Organizador</h2>
           <Link to={`/profile/${creator.id}`} className="creator-card">
             <img src={creator.avatar} alt={creator.name} className="creator-avatar" />
             <div>
               <h3>{creator.name}</h3>
-              <p>@{creator.username} • {creator.location}</p>
+              <p className='session-detail-text'>@{creator.username} • {creator.location}</p>
             </div>
           </Link>
         </div>
@@ -100,15 +102,15 @@ function SessionDetail() {
 
       {/* Lista de participantes */}
       <div className="participants-section">
-        <h2>Participantes ({session.participants.length})</h2>
+        <h2 className='session-detail-text'>Participantes ({session.participants.length})</h2>
         {participants.length === 0 ? (
-          <p>Ainda ninguém se juntou. Sê o primeiro!</p>
+          <p className='session-detail-text'>Ainda ninguém se juntou. Sê o primeiro!</p>
         ) : (
           <div className="participants-grid">
             {participants.map(user => (
               <Link key={user.id} to={`/profile/${user.id}`} className="participant-card">
                 <img src={user.avatar} alt={user.name} />
-                <p>{user.name}</p>
+                <p className='session-detail-text'>{user.name}</p>
               </Link>
             ))}
           </div>
@@ -117,6 +119,11 @@ function SessionDetail() {
 
       {/* Botão de ação */}
       <div className="action-buttons">
+
+        <Link to="/explore" className="back-btn">
+          ← Voltar às sessões
+        </Link>
+        
         <button
           onClick={handleJoinToggle}
           className={`join-btn ${isJoined ? 'joined' : ''} ${
@@ -130,10 +137,6 @@ function SessionDetail() {
             ? 'Sair da Sessão'
             : 'Juntar-me'}
         </button>
-
-        <Link to="/explore" className="back-btn">
-          ← Voltar às sessões
-        </Link>
       </div>
     </div>
   );
