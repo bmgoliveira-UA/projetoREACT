@@ -153,3 +153,18 @@ export const sessions = savedSessions
 export const saveSessions = () => {
   localStorage.setItem('sportconnect_sessions', JSON.stringify(sessions));
 };
+
+
+export function updateSession(updatedSession) {
+  const index = sessions.findIndex(s => s.id === updatedSession.id);
+
+  if (index === -1) return null;
+
+  sessions[index] = {
+    ...sessions[index],
+    ...updatedSession
+  };
+
+  saveSessions();
+  return sessions[index];
+}

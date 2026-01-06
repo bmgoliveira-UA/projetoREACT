@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { currentUser } from '../data/login';
-import { sessions } from '../data/sessionData';
+import { sessions, updateSession } from '../data/sessionData';
 import '../styles/SessionManagement.css'; // reutiliza o mesmo CSS da CreateSession com pequenas alterações
 
 function EditSession() {
@@ -84,15 +84,18 @@ function EditSession() {
 
     if (!validateForm()) return;
 
-    // Simula atualização da sessão
-    const updatedSession = {
-      ...session,
+    const updatedData = {
+      id: session.id,
       ...formData,
       maxParticipants: parseInt(formData.maxParticipants)
     };
 
-    console.log('Sessão atualizada:', updatedSession);
-    // Em projeto real: atualizarias o array sessions ou enviarias para backend
+    const updatedSession = updateSession(updatedData);
+
+    if (!updatedSession) {
+      alert('Erro ao atualizar a sessão');
+      return;
+    }
 
     setSuccess(true);
 
